@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class ACManagementSystem {
+   public static void main(String[] args) {
+      Scanner input = new Scanner(System.in);
+
+      int roomNumber;
+      double temperature;
+      String mode;
+
+      System.out.print("Enter the room number: ");
+      roomNumber = input.nextInt();
+
+      System.out.print("Enter the desired temperature: ");
+      temperature = input.nextDouble();
+
+      System.out.print("Enter the desired mode (Cool, Heat, Fan): ");
+      mode = input.next();
+
+      System.out.println("\nAC Management System");
+      System.out.println("Room Number: " + roomNumber);
+      System.out.println("Temperature: " + temperature + " degrees Celsius");
+      System.out.println("Mode: " + mode);
+   }
+}
