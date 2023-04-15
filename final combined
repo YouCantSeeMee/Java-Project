@@ -1,0 +1,128 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ACServiceManagementSystem {
+  private static ArrayList<String> customerList = new ArrayList<String>();
+  private static ArrayList<String> acUnitList = new ArrayList<String>();
+  private static ArrayList<String> serviceSchedule = new ArrayList<String>();
+
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+    int choice;
+
+    do {
+      System.out.println("AC Service Management System Menu:");
+      System.out.println("1. Add new customer");
+      System.out.println("2. Add new AC unit");
+      System.out.println("3. View customer list");
+      System.out.println("4. View AC unit list");
+      System.out.println("5. Schedule AC service");
+      System.out.println("6. View service schedule");
+      System.out.println("7. Exit");
+
+      System.out.print("Enter your choice (1-7): ");
+      choice = input.nextInt();
+
+      switch (choice) {
+        case 1:
+          addCustomer();
+          break;
+        case 2:
+          addACUnit();
+          break;
+        case 3:
+          viewCustomerList();
+          break;
+        case 4:
+          viewACUnitList();
+          break;
+        case 5:
+          scheduleACService();
+          break;
+        case 6:
+          viewServiceSchedule();
+          break;
+        case 7:
+          System.out.println("Exiting AC Service Management System. Thank you!");
+          break;
+        default:
+          System.out.println("Invalid choice. Please try again.");
+          break;
+      }
+
+    } while (choice != 7);
+
+    input.close();
+  }
+
+  private static void addCustomer() {
+    Scanner input = new Scanner(System.in);
+    System.out.print("Enter customer name: ");
+    String customerName = input.nextLine();
+    customerList.add(customerName);
+    System.out.println("Customer \"" + customerName + "\" has been added.");
+  }
+
+  private static void addACUnit() {
+    Scanner input = new Scanner(System.in);
+    System.out.print("Enter AC unit name: ");
+    String acUnitName = input.nextLine();
+    acUnitList.add(acUnitName);
+    System.out.println("AC unit \"" + acUnitName + "\" has been added.");
+  }
+
+  private static void viewCustomerList() {
+    System.out.println("Customer List:");
+    if (customerList.isEmpty()) {
+      System.out.println("No customers added yet.");
+    } else {
+      for (String customer : customerList) {
+        System.out.println("- " + customer);
+      }
+    }
+  }
+
+  private static void viewACUnitList() {
+    System.out.println("AC Unit List:");
+    if (acUnitList.isEmpty()) {
+      System.out.println("No AC units added yet.");
+    } else {
+      for (String acUnit : acUnitList) {
+        System.out.println("- " + acUnit);
+      }
+    }
+  }
+
+  private static void scheduleACService() {
+    Scanner input = new Scanner(System.in);
+    System.out.println("Schedule AC Service:");
+    System.out.print("Enter customer name: ");
+    String customerName = input.nextLine();
+    if (!customerList.contains(customerName)) {
+      System.out.println("Customer \"" + customerName + "\" does not exist.");
+      return;
+    }
+    System.out.print("Enter AC unit name: ");
+    String acUnitName = input.nextLine();
+    if (!acUnitList.contains(acUnitName)) {
+      System.out.println("AC unit \"" + acUnitName + "\" does not exist.");
+      return;
+    }
+    System.out.print("Enter service date: ");
+    String serviceDate = input.nextLine();
+    serviceSchedule.add(customerName +
+    " - " + acUnitName + " - " + serviceDate);
+System.out.println("AC service scheduled for \"" + customerName + "\" on \"" + serviceDate + "\" for AC unit \"" + acUnitName + "\".");
+}
+
+private static void viewServiceSchedule() {
+System.out.println("Service Schedule:");
+if (serviceSchedule.isEmpty()) {
+System.out.println("No AC services scheduled yet.");
+} else {
+for (String service : serviceSchedule) {
+System.out.println("- " + service);
+}
+}
+}
+}
